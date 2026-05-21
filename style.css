@@ -1,0 +1,517 @@
+/* --- GLOBAL DESIGN SYSTEM & VARIABLES --- */
+:root {
+    --brand-primary: #0f172a;    /* Deep Executive Slate */
+    --brand-accent: #2563eb;     /* Deep Performance Blue */
+    --brand-accent-hover: #1d4ed8;
+    --text-dark: #1e293b;        /* Charcoal Text */
+    --text-light: #64748b;       /* Professional Muted Gray */
+    --bg-light: #f8fafc;         /* Crisp Slate-Gray Background */
+    --bg-white: #ffffff;
+    --border-color: #e2e8f0;    /* Clean Structural Divider Lines */
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* --- BASE RESETS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- STICKY NAVIGATION --- */
+.site-header {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    text-decoration: none;
+    color: var(--brand-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background: var(--brand-accent);
+    border-radius: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--brand-primary);
+}
+
+.btn-header {
+    background: var(--brand-primary);
+    color: var(--bg-white) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem !important;
+    transition: background 0.2s ease;
+}
+
+.btn-header:hover {
+    background: var(--brand-accent);
+}
+
+/* --- HERO WRAPPER BLOCK --- */
+.hero-section {
+    background: var(--bg-white);
+    padding: 9rem 2rem 6rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.hero-title-tag {
+    color: var(--brand-accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.hero-content h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.2;
+    color: var(--brand-primary);
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+    max-width: 560px;
+}
+
+/* --- STATS CONTEXT --- */
+.metrics-banner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.metric-item {
+    text-align: left;
+}
+
+.metric-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--brand-primary);
+    display: block;
+}
+
+.metric-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+/* --- HERO DATA DECORATION --- */
+.visual-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2.5rem;
+}
+
+.visual-card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.visual-card-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.visual-card-status {
+    color: var(--brand-accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.visual-card-body {
+    display: grid;
+    gap: 1rem;
+}
+
+.data-row {
+    background: var(--bg-white);
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.data-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.data-status {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.status-optimum { color: #16a34a; }
+.status-reduction { color: var(--brand-accent); }
+
+/* --- STRUCTURAL GENERAL LAYOUTS --- */
+.section-padding {
+    padding: 7rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-tag {
+    color: var(--brand-accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--brand-primary);
+}
+
+/* --- STRATEGY CARDS --- */
+.blueprint-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.blueprint-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border-top: 3px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.blueprint-card:hover {
+    border-top-color: var(--brand-accent);
+}
+
+.blueprint-num {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--brand-accent);
+    background: #eff6ff;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.blueprint-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--brand-primary);
+}
+
+.blueprint-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* --- FILTERABLE CASES STYLE --- */
+.portfolio-section {
+    background: var(--bg-white);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filter-container {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: all 0.2s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--brand-primary);
+    color: var(--bg-white);
+    border-color: var(--brand-primary);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.case-card {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-white);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.case-header {
+    padding: 1.5rem 2rem;
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.case-client {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.case-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: #e2e8f0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.case-body {
+    padding: 2rem;
+    flex-grow: 1;
+}
+
+.case-body h4 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.case-body p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.case-stat {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand-accent);
+}
+
+.case-stat-lbl {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+/* --- CONVERSION FORM LAYOUT --- */
+.form-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 5rem;
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 4rem;
+}
+
+.form-info h3 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.form-info p {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-details-box {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.contact-details-box p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.field-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brand-primary);
+}
+
+.field-group input, .field-group textarea {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    outline: none;
+    background: var(--bg-light);
+    transition: all 0.2s ease;
+}
+
+.field-group input:focus, .field-group textarea:focus {
+    border-color: var(--brand-accent);
+    background: var(--bg-white);
+}
+
+.btn-submit {
+    background: var(--brand-primary);
+    color: var(--bg-white);
+    border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.btn-submit:hover {
+    background: var(--brand-accent);
+}
+
+/* --- FOOTER SPEC --- */
+.site-footer {
+    background: var(--brand-primary);
+    color: #94a3b8;
+    padding: 3rem 2rem;
+    border-top: 1px solid #1e293b;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.footer-subtext {
+    font-size: 0.8rem;
+}
+
+/* --- RESPONSIVE MEDIA BREAKPOINTS --- */
+@media (max-width: 968px) {
+    .hero-container, .blueprint-grid, .portfolio-grid, .form-layout, .input-row {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .form-layout {
+        padding: 2rem;
+    }
+    .nav-links {
+        display: none;
+    }
+}
