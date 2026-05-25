@@ -1,12 +1,39 @@
 /**
  * Corporate Portfolio Architecture Script
- * Handles view filtration engines and asynchronous interface events.
+ * Handles responsive layout mechanics, view filtration engines, 
+ * and asynchronous interface execution.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initMobileNavigation();
     initPortfolioFilters();
     initContactForm();
 });
+
+/**
+ * Handles the responsive drop-down animation states for mobile displays.
+ */
+function initMobileNavigation() {
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    if (!navToggle || !navMenu) return;
+
+    // Toggle overlay dropdown visibility state on hamburger button tap
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Automatically collapse layout overlay when a targeted anchor path is chosen
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+}
 
 /**
  * Handles classification visibility updates across the portfolio nodes.

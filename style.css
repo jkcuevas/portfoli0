@@ -44,6 +44,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+    position: relative;
 }
 
 .logo {
@@ -64,6 +65,10 @@ body {
     height: 18px;
     background: var(--brand-accent);
     border-radius: 2px;
+}
+
+.nav-menu {
+    display: block;
 }
 
 .nav-links {
@@ -97,6 +102,38 @@ body {
 .btn-header:hover {
     background: var(--brand-accent);
 }
+
+/* --- RESPONSIVE HAMBURGER DEFAULT ICON --- */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1100;
+}
+
+.nav-toggle .hamburger {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background: var(--brand-primary);
+    transition: background 0.2s ease-in-out;
+}
+
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--brand-primary);
+    transition: transform 0.2s ease-in-out, top 0.2s ease-in-out;
+}
+.nav-toggle .hamburger::before { top: -6px; }
+.nav-toggle .hamburger::after { top: 6px; }
 
 /* --- HERO WRAPPER BLOCK --- */
 .hero-section {
@@ -306,6 +343,7 @@ body {
 
 .filter-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.75rem;
     margin-bottom: 2.5rem;
 }
@@ -502,16 +540,77 @@ body {
     font-size: 0.8rem;
 }
 
-/* --- RESPONSIVE MEDIA BREAKPOINTS --- */
-@media (max-width: 968px) {
-    .hero-container, .blueprint-grid, .portfolio-grid, .form-layout, .input-row {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
+/* --- PLATFORM SCREEN MEDIA QUERY OVERRIDES --- */
+
+@media (max-width: 1024px) {
+    .hero-container { gap: 3rem; }
+    .form-layout { gap: 3rem; padding: 3rem; }
+}
+
+@media (max-width: 768px) {
+    .hero-container, 
+    .blueprint-grid, 
+    .portfolio-grid, 
     .form-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .hero-section { padding: 7rem 1.5rem 4rem; }
+    .section-padding { padding: 4rem 1.5rem; }
+    .hero-content h1 { font-size: 2.25rem; }
+    .section-header { margin-bottom: 2.5rem; }
+    .nav-container { padding: 1rem 1.5rem; }
+
+    /* Interactive absolute drop menu mechanics */
+    .nav-toggle { display: block; }
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-white);
+        border-bottom: 1px solid var(--border-color);
         padding: 2rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
     }
+    
+    .nav-menu.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
     .nav-links {
-        display: none;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: stretch;
+        text-align: center;
     }
+    .nav-links a { display: block; padding: 0.5rem 0; font-size: 1rem; }
+    .btn-header { display: inline-block; width: 100%; }
+
+    /* Animated close button icon transformation states */
+    .nav-toggle.active .hamburger { background: transparent; }
+    .nav-toggle.active .hamburger::before { top: 0; transform: rotate(45deg); }
+    .nav-toggle.active .hamburger::after { top: 0; transform: rotate(-45deg); }
+
+    .metrics-banner { grid-template-columns: repeat(3, 1fr); padding: 1rem; gap: 1rem; }
+    .metric-value { font-size: 1.4rem; }
+    .input-row { grid-template-columns: 1fr; gap: 0; }
+    .footer-container { flex-direction: column; gap: 1rem; text-align: center; }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 1.85rem; }
+    .section-title { font-size: 1.6rem; }
+    .metrics-banner { grid-template-columns: 1fr; gap: 1.25rem; }
+    .metric-item { text-align: center; }
+    .visual-card, .form-layout { padding: 1.5rem; }
+    .case-header { padding: 1.25rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .case-body { padding: 1.5rem; }
 }
